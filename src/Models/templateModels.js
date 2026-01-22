@@ -40,12 +40,11 @@ const templateSchema = new mongoose.Schema(
       ],
     },
 
-    heroSection: [
-      {
-        title: {
-          type: String,
-        },
-        tagline: {
+    heroSection: {
+      title: {
+        type: String,
+      },
+      tagline: {
         type: String,
       },
       description: {
@@ -58,8 +57,7 @@ const templateSchema = new mongoose.Schema(
       button: {
         type: String,
       },
-    }
-    ],
+    },
 
     // templateUrl:{
     //     type:String,

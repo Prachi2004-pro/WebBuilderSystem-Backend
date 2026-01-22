@@ -1,8 +1,8 @@
+require("dotenv").config(); //load environment variables from .env file
 const express = require("express");
+const app = express(); //server application object
 const userRouter = require("./Routes/userRoutes");
 const templateRouter = require("./Routes/TemplateRoutes");
-const app = express(); //server application object
-require("dotenv").config(); //load environment variables from .env file
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -24,6 +24,7 @@ app.use((req, res, next)=>{
     console.log("HTTP Method:" + req.method + " URL:" + req.url);
     next();
 });
+// console.log("TEST KEY:", process.env.CLOUDINARY_API_KEY);
 
 app.use(express.json()); //middleware to parse JSON request bodies
 
