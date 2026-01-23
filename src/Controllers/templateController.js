@@ -26,6 +26,15 @@ const CreateTemplate = async (req, res) => {
       templateName: req.body.templateName,
       templateType: req.body.templateType,
 
+      sections: {
+        hero: true,
+        features: true,
+        aboutUs: true,
+        contactUs: true,
+        faq: true,
+        footer: true,
+      },
+
       headerSection: {
         businessName: "",
         logo: "",
@@ -41,10 +50,27 @@ const CreateTemplate = async (req, res) => {
       },
 
       features: [],
-      aboutUs: {},
-      contactUs: {},
-      FAQ: [],
-      footer: {},
+
+      aboutUs: {
+        aboutTitle: "",
+        aboutDescription: "",
+        team: [],
+      },
+
+      contactUs: {
+        email: "",
+        phoneNo: "",
+        address: "",
+      },
+
+      faq: [],
+
+      footer: {
+        brandName: "",
+        brandLogo: "",
+        SocialLinks: null,
+        copywrite: "",
+      },
     });
 
     return res.status(201).json({

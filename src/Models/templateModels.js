@@ -164,20 +164,29 @@ const templateSchema = new mongoose.Schema(
       brandName: {
         type: String,
       },
-      branLogo: {
+      brandLogo: {
         type: String,
         url: true,
       },
       SocialLinks: {
         type: String,
         enum: ["Instagram", "Facebook", "WhatsApp", "LinkedIn", "Youtube"],
-        url: true,
+        default: null,
       },
       copywrite: {
         type: String,
       },
     },
+
+    sections: {
+      hero: { type: Boolean, default: true },
+      features: { type: Boolean, default: true },
+      aboutUs: { type: Boolean, default: true },
+      contactUs: { type: Boolean, default: true },
+      faq: { type: Boolean, default: true },
+      footer: { type: Boolean, default: true },
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 module.exports = mongoose.model("Template", templateSchema);
