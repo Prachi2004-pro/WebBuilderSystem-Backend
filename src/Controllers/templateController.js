@@ -172,10 +172,82 @@ const getTemplateById = async (req, res) => {
   }
 };
 
+// Patch api for updating template status (draft/published) can be added here
+const updateTemplateStatus = async (req, res) => {
+  const id = req.params.id;
+  const { status } = req.body;
+  
+  try {
+    const userId = req.userId;
+    if (!req.userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    const template = await templateModel.findOneAndUpdate(
+      { _id: id, userId },
+      { status },
+      { new: true }
+    );
+
+    if (!template) {
+      return res.status(404).json({
+        success: false,
+        message: "Template not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      template,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+// new public get api to fetch published template by id.
+const getPublishedTemplateById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const template = await templateModel.findOne({
+      _id: id,
+      status: "published",
+    });
+
+    if (!template) {
+      return res.status(404).json({
+        success: false,
+        message: "Published template not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      template,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
 module.exports = {
   CreateTemplate,
   updateTemplate,
   deleteTemplate,
   getTemplateList,
   getTemplateById,
+  updateTemplateStatus,
+  getPublishedTemplateById,
 };

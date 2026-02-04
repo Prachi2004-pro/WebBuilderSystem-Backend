@@ -18,6 +18,12 @@ const templateSchema = new mongoose.Schema(
       required: true,
     },
 
+    status: {
+      type: String,
+      enum: ["draft", "published"],
+      default: "draft",
+    },
+
     headerSection: {
       logo: {
         type: String,
@@ -186,6 +192,7 @@ const templateSchema = new mongoose.Schema(
       faq: { type: Boolean, default: true },
       footer: { type: Boolean, default: true },
     },
+
   },
   { timestamps: true },
 );
