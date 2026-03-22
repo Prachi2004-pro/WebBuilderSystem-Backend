@@ -65,12 +65,6 @@ const templateSchema = new mongoose.Schema(
       },
     },
 
-    // templateUrl:{
-    //     type:String,
-    //     required:true,
-    //     unique:true,
-    //     index:true,
-    // },
     features: [
       {
         title: {
@@ -84,10 +78,6 @@ const templateSchema = new mongoose.Schema(
     ],
 
     aboutUs: {
-      // offers:{
-      //   type:String,
-      //   required: true,
-      // }
       aboutTitle: {
         type: String,
       },
@@ -109,38 +99,6 @@ const templateSchema = new mongoose.Schema(
         },
       ],
     },
-
-    // services: {
-    //   name: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   description: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   icon: {
-    //     type: String,
-    //     required: true,
-    //     url: true,
-    //   },
-    // },
-
-    // testimonials: {
-    //   name: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   feedback: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   Image: {
-    //     type: String,
-    //     required: true,
-    //     url: true,
-    //   },
-    // },
 
     contactUs: {
       email: {
@@ -184,6 +142,18 @@ const templateSchema = new mongoose.Schema(
       },
     },
 
+    projects: [
+      {
+        projectName: {
+          type: String,
+        },
+        projectDescription: {
+          type: String,
+        },
+        _id: false,
+      }
+    ],
+
     sections: {
       hero: { type: Boolean, default: true },
       features: { type: Boolean, default: true },
@@ -191,6 +161,7 @@ const templateSchema = new mongoose.Schema(
       contactUs: { type: Boolean, default: true },
       faq: { type: Boolean, default: true },
       footer: { type: Boolean, default: true },
+      projects: { type: Boolean, default: true },
     },
 
   },
